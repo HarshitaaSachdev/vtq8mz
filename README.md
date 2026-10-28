@@ -94,9 +94,7 @@ Forecasts published after their own target time are discarded. This rule is cove
 │   ├── nginx.conf               Serves the built app and proxies /api in Docker
 │   ├── vite.config.js           Dev server with /api proxy to the backend
 │   └── Dockerfile               Multi-stage: build with Node, serve with nginx
-├── api/index.py                 Vercel serverless entry point (loads backend app)
-├── requirements.txt             Points Vercel to backend/requirements.txt
-├── vercel.json                  Vercel build + routing config
+├── vercel.json                  Vercel Services config: frontend + backend, /api routing
 ├── docker-compose.yml           Runs backend + frontend together
 └── README.md
 ```
@@ -164,10 +162,9 @@ python -m scripts.snapshot
 ```
 
 ---
-
 ### Deployment (Vercel)
 
-The repo deploys to Vercel with no extra setup: `vercel.json` builds the React app from `frontend/` and serves the FastAPI backend as a Python serverless function via `api/index.py`. Requests to `/api/*` are rewritten to that function, so the frontend uses the same `/api` paths locally, in Docker, and in production.
+Deployed with [Vercel Services](https://vercel.com/kb/guide/vercel-services): `vercel.json` declares two services, the Vite frontend (`frontend/`) and the FastAPI backend (`backend/`, entrypoint `app.main:app`). Requests to `/api/*` are routed to the backend with the path unchanged, and everything else is served by the frontend. The frontend therefore uses the same `/api` paths locally (Vite proxy), in Docker (nginx) and in production.
 
 
 ## Limitations and next steps
