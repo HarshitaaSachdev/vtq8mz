@@ -11,8 +11,13 @@ from .data import Dataset, load_dataset
 from .forecasts import Point, build_series, decision_cutoff, horizon_cutoff, target_times
 from .metrics import Metrics, compute_metrics
 
-app = FastAPI(title="Wind Forecast Monitor API", version="1.0.0")
-app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["GET"])
+app = FastAPI(
+    title="Wind Forecast Monitor API",
+    version="1.0.0",
+    # Under /api so the docs are routed to the backend on Vercel too
+    docs_url="/api/docs",
+    openapi_url="/api/openapi.json",
+)
 
 DEFAULT_HORIZONS = [0, 1, 2, 4, 6, 8, 12, 16, 20, 24, 30, 36, 42, 48]
 

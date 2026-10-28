@@ -123,7 +123,7 @@ Requires Docker Desktop.
 docker compose up --build
 ```
 
-Open http://localhost:8080 (API on http://localhost:8000/docs).
+Open http://localhost:8080 (API docs on http://localhost:8000/api/docs).
 
 ### Option 2: Run locally
 
