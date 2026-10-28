@@ -2,7 +2,7 @@
 
 A web app that helps a UK energy supplier's day-ahead trading team understand **how reliable national wind generation forecasts are** when they buy power on the day-ahead market.
 
-- **Live app:** _link added after deployment_
+- **Live app:** https://vtq8mz.vercel.app
 - **Video walkthrough:** _link added after recording_
 
 ![stack](https://img.shields.io/badge/frontend-React%20%2B%20Vite-61dafb) ![stack](https://img.shields.io/badge/backend-Python%20%2B%20FastAPI-009688) ![stack](https://img.shields.io/badge/run-Docker-2496ed)
